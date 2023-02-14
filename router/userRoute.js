@@ -8,9 +8,9 @@ const checkRole = require("../medlware/checkRole");
 router.post("/signup", /* [userControlle.upload.single("picture")], */ authControlle.SignUp);
 router.post("/login", authControlle.loginUser);
 
-router.use(isAuthorized);
-router.use(checkRole("Admin"));
-router.post("/", [userControlle.upload.single("picture")], userControlle.AddUser);
+/* router.use(isAuthorized);
+router.use(checkRole("Admin")); */
+router.post("/", /* [userControlle.upload.single("picture")], */ userControlle.AddUser);
 router.get('/',userControlle.getAllUser);
 router
   .route("/:id")
