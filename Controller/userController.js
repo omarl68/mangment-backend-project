@@ -74,6 +74,7 @@ exports.getUserById = catchAsync(async (req, res) => {
 });
 
 exports.AddUser = catchAsync(async (req, res) => {
+  console.log("tt");
   const user = await User.create(req.body,req.file);
   res.status(200).json({
     status: "success",
@@ -82,6 +83,9 @@ exports.AddUser = catchAsync(async (req, res) => {
 });
 
 exports.UpdateUser = catchAsync(async (req, res) => {
+  if (req.body.password){
+    req.body.password = await bcrypt.hash(req.body.password, 10);
+  }
   const user = await User.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,

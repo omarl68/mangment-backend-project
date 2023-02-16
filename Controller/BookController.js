@@ -1,19 +1,17 @@
-const {
-  default: TouchRipple,
-} = require("@mui/material/ButtonBase/TouchRipple");
+
 const Book = require("../models/bookModel");
 const APIFeatures = require("../utils/apiFeature");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync.js");
 
 exports.getAllBook = catchAsync(async (req, res) => {
-  const feature = new APIFeatures(book.find(), req.query)
+ /* const feature = new APIFeatures(book.find(), req.query)
     .filter()
     .sort()
     .limitFields()
     .paginate();
-  const book = await feature.query;
-  /* const book = await Book.find();*/
+  const book = await feature.query;*/
+   const book = await Book.find();
   res.status(200).json({
     status: "success",
     length: book.length,

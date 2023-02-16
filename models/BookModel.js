@@ -7,7 +7,6 @@ const bookSchema = mongoose.Schema(
       required: [true, "tell your name of book"],
       trim: true,
     },
-    photo: String,
     author: {
       type: String,
       required: [true, "provide the author"],
@@ -33,10 +32,10 @@ const bookSchema = mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-bookSchema.pre("save", function (next) {
+/* bookSchema.pre("save", function (next) {
   this.slug = slugify(this.name, { lower: true });
   next();
-});
+}); */
 
 const Book = mongoose.model("Book", bookSchema);
 module.exports = Book;

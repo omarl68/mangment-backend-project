@@ -25,12 +25,13 @@ const userSchema = mongoose.Schema({
   picture: String,
   password: {
     type: String,
-    required: [true, "provide your email"],
+    // required: [true, "provide your password"],
     minlength: 8,
+    select:false
   },
   passwordConfirm: {
     type: String,
-    required: [true, "provide your passwordConfirm"],
+    // required: [true, "provide your passwordConfirm"],
     minlength: 8,
     validator: {
       validator: function (el) {
@@ -38,6 +39,7 @@ const userSchema = mongoose.Schema({
       },
       message: "Password is not the same!",
     },
+    select:false
   },
   role: {
     type: String,
